@@ -7,7 +7,8 @@ public class C206_CaseStudy {
 			System.out.println("1. View all outlet");
 			System.out.println("2. Add new outlet");
 			System.out.println("3. Delete outlet");
-			System.out.println("4. Exit");
+			System.out.println("4. Update no of staff");
+			System.out.println("5. Exit");
 			
 		}
 		
@@ -29,6 +30,7 @@ public class C206_CaseStudy {
 		}
 		
 		public static void deleteOutlet(ArrayList<outlet>outletList) {
+			boolean isFound = false;
 			int outletId = Helper.readInt("Enter product ID: ");
 			String confirm = Helper.readString("Are you sure you would want to delete this outlet ID ? ");
 			
@@ -43,6 +45,32 @@ public class C206_CaseStudy {
 				}
 				
 			}
+			
+		}
+		
+		public static void updateStaff(ArrayList<outlet>outletList) {
+			int id = Helper.readInt("Enter Outlet ID: ");
+			int Index = -1;
+			int numTimesReturn = 0;
+			int num = 0;
+			int option = 0;
+			boolean isFound = false;
+			
+			for (int i=0; i<outletList.size();i++) {
+				if(id == outletList.get(i).getOutletID()) {
+					isFound = true;
+					Index = i;
+				}
+			}
+			if(isFound == true) {
+				int NoOfStaff = Helper.readInt("What is the update number of staff > ");
+				outletList.get(Index).setNoOfStaff(NoOfStaff);
+				System.out.println(NoOfStaff + "Updated");
+			
+			}else {
+				System.out.println("Invalid outlet id!");
+			}
+			
 			
 		}
 		public static void main(String[] args) {
@@ -64,11 +92,14 @@ public class C206_CaseStudy {
 			}
 			else if(option ==3) {
 				deleteOutlet(outletList);
-				System.out.println(outletList);
 				System.out.println("");
 			}
-			else if(option==4){
+			else if(option==5){
 				System.out.println("Exit");
+			}
+			else if(option ==4) {
+				updateStaff(outletList);
+				System.out.println(" ");
 			}
 			else {
 				System.out.println("Invalid input!");
