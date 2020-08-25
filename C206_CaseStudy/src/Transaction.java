@@ -1,24 +1,33 @@
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class Transaction {
 	private String transID;
 	private LocalDate transDate;
 	private String description;
 	private String customer;
-	private String product;
+	private product_item product_item;
 	private String staffID;
 	private String staffName;
-	
-	public Transaction(String transID, LocalDate transDate, String description, String customer, String product,
-			String staffID, String staffName) {
+
+	public Transaction(String transID, LocalDate transDate, String description, String customer, int product_id,
+			String product_name, String staffID, String staffName,String condition) {
+
+		product_item = new product_item(product_id, product_name,condition);
 		this.transID = transID;
 		this.transDate = transDate;
 		this.description = description;
 		this.customer = customer;
-		this.product = product;
 		this.staffID = staffID;
 		this.staffName = staffName;
+	}
+	
+
+	public product_item getProduct_item() {
+		return product_item;
+	}
+
+	public void setProduct_item(product_item product_item) {
+		this.product_item = product_item;
 	}
 
 	public String getTransID() {
@@ -53,14 +62,6 @@ public class Transaction {
 		this.customer = customer;
 	}
 
-	public String getProduct() {
-		return product;
-	}
-
-	public void setProduct(String product) {
-		this.product = product;
-	}
-
 	public String getStaffID() {
 		return staffID;
 	}
@@ -76,7 +77,6 @@ public class Transaction {
 	public void setStaffName(String staffName) {
 		this.staffName = staffName;
 	}
-
 	
 	
 

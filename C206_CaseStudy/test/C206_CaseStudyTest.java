@@ -16,9 +16,9 @@ public class C206_CaseStudyTest {
 	@Before
 	public void setUp() throws Exception {
 		t1 = new Transaction("T001", LocalDate.parse("2010-01-12"), "First transation"
-				, "customer 1", "product food", "id1010", "andy");
+				, "customer 1",1, "product food", "id1010", "andy", "return");
 		t2 = new Transaction("T002", LocalDate.parse("2010-10-10"), "2nd transation"
-				, "customer 2", "product drink", "id2020", "bob");
+				, "customer 2",2 ,"product drink", "id2020", "bob", "return");
 		
 		transactionList= new ArrayList<Transaction>();
 		
@@ -33,15 +33,16 @@ public class C206_CaseStudyTest {
 		//fail("Not yet implemented"); 
 		assertTrue("C206_CaseStudy_SampleTest ",true);
 		
+		// when array list is null
+		assertEquals("Check the arraylist size is 0", 0, transactionList.size());
 		
-		//Add
-		assertNotNull("Check if there is valid arraylist to add to", transactionList);
-		assertEquals("Check the arraylist size is 1", 1, transactionList.size());
+		//Add 1 transaction to the array list
+		C206_CaseStudy.addTransaction(transactionList, t1);
+		assertEquals (1, transactionList.size());
 		
-		//View all
-		String allTransaction = C206_CaseStudy.viewTransaction(transactionList);
-		String testOutput = "";
-		assertEquals("Check that ViewAllCamcorderlist", testOutput, allTransaction);
+		//after adding 2 transaction, test if the size of the list is 2 - normal
+		C206_CaseStudy.addTransaction(transactionList, t2);
+		assertEquals("Test that chromebook arraylist size is 2", 2, transactionList.size());
 		
 		
 		
